@@ -1,11 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
-const xlsx = require('xlsx');
+const excel = require('./excel')
 
 const storage = multer.diskStorage({
   destination: path.join(__dirname, '../public/uploads'),
   filename: (req, file, cb) => {
+    console.log(excel.readXlsx(file));
+
     cb(null, 'file.xlsx');
   }
 });
@@ -16,11 +18,7 @@ const uploadFile = multer({
 }).single('archivo');
 
 
-const readXlsx = () => {
-  return xlsx.readFile(path.join(__dirname, `../public/uploads/file.xslx`))
-}
 
 module.exports = {
-  uploadFile,
-  readXlsx
+  uploadFile
 }

@@ -1,9 +1,16 @@
 const express = require('express');
-const files = require('../controllers');
+const files = require('../controllers/multer');
+const excel = require('../controllers/excel')
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
+  res.render('index');
+});
+
+router.get('/print', (req, res) => {
+  let e = excel.readXlsx();
+  excel.print(e.Sheets[`${e.SheetNames[0]}`])
   res.render('index');
 });
 
@@ -21,5 +28,7 @@ router.post('/upload', (req, res) => {
     res.render('index');
   });
 });
+
+
 
 module.exports = router;
