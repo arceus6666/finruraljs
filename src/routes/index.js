@@ -15,7 +15,7 @@ router.get('/print', (req, res) => {
 });
 
 router.get('/upload', (req, res) => {
-  res.render('index');
+  res.render('download');
 });
 
 router.post('/upload', (req, res) => {
@@ -25,7 +25,7 @@ router.post('/upload', (req, res) => {
       return res.send(err);
     }
     // console.log(req.file);
-    res.render('index');
+    res.render('download');
   });
 });
 

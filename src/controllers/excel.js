@@ -8,7 +8,7 @@ const readXlsx = () => {
 }
 
 const print = (wb) => {
-  console.log(wb);
+  console.log(wb.A2);
 }
 
 module.exports = {

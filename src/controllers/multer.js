@@ -6,7 +6,7 @@ const excel = require('./excel')
 const storage = multer.diskStorage({
   destination: path.join(__dirname, '../public/uploads'),
   filename: (req, file, cb) => {
-    console.log(excel.readXlsx(file));
+    // console.log(excel.readXlsx(file));
 
     cb(null, 'file.xlsx');
   }
