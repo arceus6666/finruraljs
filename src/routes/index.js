@@ -9,8 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/print', (req, res) => {
-  let e = excel.readXlsx();
-  excel.print(e.Sheets[`${e.SheetNames[0]}`])
+  // excel.print(e.Sheets[`${e.SheetNames[0]}`])
   res.render('index');
 });
 
@@ -25,6 +24,7 @@ router.post('/upload', (req, res) => {
       return res.send(err);
     }
     // console.log(req.file);
+    excel.print();
     res.render('download');
   });
 });

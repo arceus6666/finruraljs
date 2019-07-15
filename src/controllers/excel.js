@@ -1,14 +1,20 @@
 const fs = require('fs');
-const path = require('path');
+
 if (typeof require !== 'undefined') XLSX = require('xlsx');
 
 const readXlsx = () => {
-  path.join(__dirname, 'src/public/uploads')
   return XLSX.readFile('src/public/uploads/file.xlsx')
 }
 
-const print = (wb) => {
-  console.log(wb.A2);
+const print = () => {
+  const wb = XLSX.readFile('src/public/uploads/file.xlsx');
+  const ws = wb.Sheets[`${wb.SheetNames[0]}`];
+  let data = '';
+  console.log(ws.A2)
+  data+=ws.A2.v;
+  fs.writeFileSync('src/public/downloads/file.txt', data, (err) => {
+    if (err) return err;
+  })
 }
 
 module.exports = {
